@@ -1,0 +1,116 @@
+mysql command 
+
+1 - how to data ki main kon se database me hu -> select database();
+
+2 - how to show table -> show tables;
+
+3 - how to add data in table -> insert into student values (1,' AmanKumar',' amanastel@gmail.com', 79.58,'uttar pradesh');
+
+4 - how to show data in table -> select * from student;
+
+5 - how to add new column in table with data type date -> alter table student add dob date;
+
+6 - how to modify in table size of value && email -> alter table student modify email varchar(50) unique;
+
+7 - how to change name of the table column ->  alter table student change dob birth_date date;
+
+8 - how to rename table name -> alter table student(is a table name ) rename to st(this is new table name);
+
+9 - how to drop column table -> alter table st(this is a name table) drop birth_date(this is a column);
+
+10 - how to drop primary key in table ->  alter table st drop primary key;
+
+11 - how to add table column a primary key  ->  alter table st add primary key(rollNo);
+
+
+mysql> DESC ST;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| rollNo | int         | NO   | PRI | NULL    |       |
+| name   | varchar(20) | NO   |     | NULL    |       |
+| email  | varchar(50) | YES  | UNI | NULL    |       |
+| X_per  | double(5,2) | YES  |     | 33.00   |       |
+| state  | varchar(25) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+mysql> select * from st;
++--------+------------+----------------------+-------+---------------+
+| rollNo | name       | email                | X_per | state         |
++--------+------------+----------------------+-------+---------------+
+|      1 |  AmanKumar |  amanastel@gmail.com | 79.58 | uttar pradesh |
+|      2 |  abc       | abc@ms.com           |  5.42 | Karnataka     |
+|      3 | BCD        | bcd@ms.com           | 33.00 | Rajasthan     |
+|      4 | CDE        | CDE@ms.com           | 65.24 | Rajasthan     |
++--------+------------+----------------------+-------+---------------+
+
+
+12 - how to add default value in table column -> alter table st alter X_per SET Default 33.0;
+
+13 - how to add value in column -> update st set x_per = x_per + 2 where x_per > 65.0;
+
+14 - how to change x_per -> update st set x_per = 66.00, state = 'Karnataka' where email = 'abc@ms.com';
+
+
+mysql> update st set name = 'aman', state = 'utter pradesh' where email = ' amanastel@gmail.com';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from st;
++--------+------+----------------------+-------+---------------+
+| rollNo | name | email                | X_per | state         |
++--------+------+----------------------+-------+---------------+
+|      1 | aman |  amanastel@gmail.com | 81.58 | utter pradesh |
+|      2 | abc  | abc@ms.com           | 66.00 | utter pradesh |
+|      3 | BCD  | bcd@ms.com           | 33.00 | Rajasthan     |
+|      4 | CDE  | CDE@ms.com           | 67.24 | Rajasthan     |
++--------+------+----------------------+-------+---------------+
+4 rows in set (0.00 sec)
+
+mysql> update st set email = 'amanastel@gamil.com', state = 'utter pradesh' where name = 'aman';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from st;
++--------+------+---------------------+-------+---------------+
+| rollNo | name | email               | X_per | state         |
++--------+------+---------------------+-------+---------------+
+|      1 | aman | amanastel@gamil.com | 81.58 | utter pradesh |
+|      2 | abc  | abc@ms.com          | 66.00 | utter pradesh |
+|      3 | BCD  | bcd@ms.com          | 33.00 | Rajasthan     |
+|      4 | CDE  | CDE@ms.com          | 67.24 | Rajasthan     |
++--------+------+---------------------+-------+---------------+
+4 rows in set (0.00 sec)
+
+
+15 - how to delete column using if type -> delete from st where x_per = 79.58;
+
+
+mysql> select * from st;
++--------+------------+----------------------+-------+---------------+
+| rollNo | name       | email                | X_per | state         |
++--------+------------+----------------------+-------+---------------+
+|      1 | aman       | amanastel@gamil.com  | 81.58 | utter pradesh |
+|      2 | abc        | abc@ms.com           | 66.00 | utter pradesh |
+|      3 | BCD        | bcd@ms.com           | 33.00 | Rajasthan     |
+|      4 | CDE        | CDE@ms.com           | 67.24 | Rajasthan     |
+|      6 |  AmanKumar | ramanastel@gmail.com | 79.58 | uttar pradesh |
++--------+------------+----------------------+-------+---------------+
+5 rows in set (0.01 sec)
+
+mysql> delete from st where x_per = 79.58;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from st;
++--------+------+---------------------+-------+---------------+
+| rollNo | name | email               | X_per | state         |
++--------+------+---------------------+-------+---------------+
+|      1 | aman | amanastel@gamil.com | 81.58 | utter pradesh |
+|      2 | abc  | abc@ms.com          | 66.00 | utter pradesh |
+|      3 | BCD  | bcd@ms.com          | 33.00 | Rajasthan     |
+|      4 | CDE  | CDE@ms.com          | 67.24 | Rajasthan     |
++--------+------+---------------------+-------+---------------+
+4 rows in set (0.00 sec)
+
+
+
