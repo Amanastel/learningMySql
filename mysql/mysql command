@@ -113,4 +113,104 @@ mysql> select * from st;
 4 rows in set (0.00 sec)
 
 
+SELECT * FROM st WHERE X per › (SELECT max(x_per) FROM st WHERE state = 'utter pradesh') ;
+
+
+
+
+
+
+
+
+
+
++--------- New set ---------+
+
+
+mysql> select * from st;
++--------+------+---------------------+-------+---------------+
+| rollNo | name | email               | X_per | state         |
++--------+------+---------------------+-------+---------------+
+|      1 | aman | amanastel@gamil.com | 81.58 | utter pradesh |
+|      2 | abc  | abc@ms.com          | 66.00 | utter pradesh |
+|      3 | BCD  | bcd@ms.com          | 33.00 | Rajasthan     |
+|      4 | CDE  | CDE@ms.com          | 67.24 | Rajasthan     |
++--------+------+---------------------+-------+---------------+
+4 rows in set (0.00 sec)
+
+ Q ) How to show only one table row -> select rollno from st;
+Ans ) 
++--------+
+| rollno |
++--------+
+|      2 |
+|      1 |
+|      3 |
+|      4 |
++--------+
+4 rows in set (0.00 sec)
+
+
+
+Q ) how to show two aur more table row - > select name, email from st;
+
++------+---------------------+
+| name | email               |
++------+---------------------+
+| aman | amanastel@gamil.com |
+| abc  | abc@ms.com          |
+| BCD  | bcd@ms.com          |
+| CDE  | CDE@ms.com          |
++------+---------------------+
+4 rows in set (0.00 sec)
+
+
+
+Q ) how to show if type table -> select * from st where X_per=33.00;
+
++--------+------+------------+-------+-----------+
+| rollNo | name | email      | X_per | state     |
++--------+------+------------+-------+-----------+
+|      3 | BCD  | bcd@ms.com | 33.00 | Rajasthan |
++--------+------+------------+-------+-----------+
+1 row in set (0.01 sec)
+
+mysql> select * from st where x_per <80.00;
++--------+------+------------+-------+---------------+
+| rollNo | name | email      | X_per | state         |
++--------+------+------------+-------+---------------+
+|      2 | abc  | abc@ms.com | 66.00 | utter pradesh |
+|      3 | BCD  | bcd@ms.com | 33.00 | Rajasthan     |
+|      4 | CDE  | CDE@ms.com | 67.24 | Rajasthan     |
++--------+------+------------+-------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from st where x_per <80;
++--------+------+------------+-------+---------------+
+| rollNo | name | email      | X_per | state         |
++--------+------+------------+-------+---------------+
+|      2 | abc  | abc@ms.com | 66.00 | utter pradesh |
+|      3 | BCD  | bcd@ms.com | 33.00 | Rajasthan     |
+|      4 | CDE  | CDE@ms.com | 67.24 | Rajasthan     |
++--------+------+------------+-------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from st where x_per >80;
++--------+------+---------------------+-------+---------------+
+| rollNo | name | email               | X_per | state         |
++--------+------+---------------------+-------+---------------+
+|      1 | aman | amanastel@gamil.com | 81.58 | utter pradesh |
++--------+------+---------------------+-------+---------------+
+1 row in set (0.00 sec)
+
+mysql> select * from st where x_per >0;
++--------+------+---------------------+-------+---------------+
+| rollNo | name | email               | X_per | state         |
++--------+------+---------------------+-------+---------------+
+|      1 | aman | amanastel@gamil.com | 81.58 | utter pradesh |
+|      2 | abc  | abc@ms.com          | 66.00 | utter pradesh |
+|      3 | BCD  | bcd@ms.com          | 33.00 | Rajasthan     |
+|      4 | CDE  | CDE@ms.com          | 67.24 | Rajasthan     |
++--------+------+---------------------+-------+---------------+
+4 rows in set (0.00 sec)
 
